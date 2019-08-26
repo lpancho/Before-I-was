@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/circle.png" type="Texture" id=2]
@@ -29,29 +29,29 @@ tracks/0/keys = {
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 4 )
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=4]
 offsets = PoolRealArray( 0, 0.820809, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.230799, 0.795898, 0.170994, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
 
-[sub_resource type="StyleBoxTexture" id=7]
-texture = SubResource( 6 )
+[sub_resource type="StyleBoxTexture" id=6]
+texture = SubResource( 5 )
 region_rect = Rect2( 0, 0, 2048, 1 )
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=7]
 offsets = PoolRealArray( 0, 0.515406, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 0.805598, 0.907715, 0.634691, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
 
-[sub_resource type="StyleBoxTexture" id=10]
-texture = SubResource( 9 )
+[sub_resource type="StyleBoxTexture" id=9]
+texture = SubResource( 8 )
 region_rect = Rect2( 686, 85, 2, 0 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 4 )
 
 [sub_resource type="Gradient" id=11]
@@ -74,6 +74,31 @@ gradient = SubResource( 14 )
 
 [sub_resource type="StyleBoxTexture" id=16]
 texture = SubResource( 15 )
+region_rect = Rect2( 0, 0, 2048, 1 )
+
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=18]
+offsets = PoolRealArray( 0, 0.504202, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.93457, 0.895868, 0.0730133, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=19]
+gradient = SubResource( 18 )
+
+[sub_resource type="StyleBoxTexture" id=20]
+texture = SubResource( 19 )
+region_rect = Rect2( 0, 0, 2048, 1 )
+
+[sub_resource type="Gradient" id=21]
+offsets = PoolRealArray( 0, 0.507003, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.90369, 0.904297, 0.826584, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
+
+[sub_resource type="StyleBoxTexture" id=23]
+texture = SubResource( 22 )
 region_rect = Rect2( 0, 0, 2048, 1 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -99,6 +124,10 @@ one_shot = true
 wait_time = 3.0
 one_shot = true
 
+[node name="WashSkillTimer" type="Timer" parent="."]
+wait_time = 45.0
+one_shot = true
+
 [node name="StartInvisibleTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -110,7 +139,6 @@ anims/Invisible = SubResource( 2 )
 color = Color( 0.345098, 0.647059, 0.941176, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.5
@@ -123,8 +151,8 @@ custom_constants/separation = 50
 alignment = 1
 
 [node name="DashBox" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-margin_left = 287.0
-margin_right = 487.0
+margin_left = 162.0
+margin_right = 362.0
 margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/DashBox"]
@@ -140,8 +168,8 @@ margin_top = 26.0
 margin_right = 200.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 200, 14 )
-custom_styles/fg = SubResource( 7 )
-custom_styles/bg = SubResource( 10 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 9 )
 max_value = 15.0
 step = 1.0
 value = 15.0
@@ -151,14 +179,14 @@ percent_visible = false
 one_shot = true
 
 [node name="InvisibleBox" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-margin_left = 537.0
-margin_right = 737.0
+margin_left = 412.0
+margin_right = 612.0
 margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/InvisibleBox"]
 margin_right = 200.0
 margin_bottom = 22.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 10 )
 text = "INVISIBLE COOLDOWN"
 align = 1
 valign = 1
@@ -179,27 +207,31 @@ percent_visible = false
 one_shot = true
 
 [node name="WashBox" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
-visible = false
 margin_left = 662.0
 margin_right = 862.0
 margin_bottom = 40.0
 
 [node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/WashBox"]
 margin_right = 200.0
-margin_bottom = 14.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 17 )
 text = "WASH COOLDOWN"
 align = 1
 valign = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer/WashBox"]
-margin_top = 18.0
+margin_top = 26.0
 margin_right = 200.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 200, 14 )
-max_value = 15.0
+custom_styles/fg = SubResource( 20 )
+custom_styles/bg = SubResource( 23 )
+max_value = 45.0
 step = 1.0
-value = 15.0
+value = 45.0
 percent_visible = false
+
+[node name="WashProgTimer" type="Timer" parent="CanvasLayer/HBoxContainer/WashBox"]
 
 [node name="Dash" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -211,6 +243,8 @@ volume_db = -20.0
 [connection signal="timeout" from="DashSkillTimer" to="." method="_on_DashSkillTimer_timeout"]
 [connection signal="timeout" from="InvisibleSkillTimer" to="." method="_on_InvisibleSkillTimer_timeout"]
 [connection signal="timeout" from="InvisibleTimer" to="." method="_on_InvisibleTimer_timeout"]
+[connection signal="timeout" from="WashSkillTimer" to="." method="_on_WashSkillTimer_timeout"]
 [connection signal="timeout" from="StartInvisibleTimer" to="." method="_on_StartInvisibleTimer_timeout"]
 [connection signal="timeout" from="CanvasLayer/HBoxContainer/DashBox/DashProgTimer" to="." method="_on_DashProgTimer_timeout"]
 [connection signal="timeout" from="CanvasLayer/HBoxContainer/InvisibleBox/InviProgTimer" to="." method="_on_InviProgTimer_timeout"]
+[connection signal="timeout" from="CanvasLayer/HBoxContainer/WashBox/WashProgTimer" to="." method="_on_WashProgTimer_timeout"]

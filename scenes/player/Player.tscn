@@ -92,7 +92,7 @@ region_rect = Rect2( 0, 0, 2048, 1 )
 
 [sub_resource type="Gradient" id=21]
 offsets = PoolRealArray( 0, 0.507003, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.90369, 0.904297, 0.826584, 1, 1, 1, 1, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.925781, 0.679871, 0.829722, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=22]
 gradient = SubResource( 21 )
@@ -139,6 +139,7 @@ anims/Invisible = SubResource( 2 )
 color = Color( 0.345098, 0.647059, 0.941176, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.5

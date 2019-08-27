@@ -36,16 +36,16 @@ func _physics_process(delta):
 	var E = Input.is_action_just_pressed("E") # WASH
 	
 	if Q and dash_skill_t.is_stopped():
-		current_dash_value = DASH_VALUE
 		$Dash.play()
+		current_dash_value = DASH_VALUE
 		dash_skill_t.start()
 		dash_prog_timer.start()
 	if W and invi_skill_t.is_stopped() and invi_t.is_stopped():
+		$Invisible.play()
 		set_collision_mask_bit(1, false)
 		invi_t.start()
 		invi_skill_t.start()
 		invi_prog_timer.start()
-		$Invisible.play()
 		anim.play("Invisible")
 	if E and wash_skill_t.is_stopped():
 		var wash = wash_scn.instance()

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 func _ready():
+	$Wash.play()
 	$Anim.play("default")
 	pass
 
